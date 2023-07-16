@@ -22,6 +22,18 @@ public class MainActivity extends AppCompatActivity {
             startActivity(nextPage);
         });
 
+        mainBinding.currency.setOnClickListener(clk ->{
+            // TODO: switch to currency page
+        });
+
+        mainBinding.trivia.setOnClickListener(clk ->{
+            // TODO: switch to trivia page
+        });
+
+        mainBinding.bear.setOnClickListener(clk ->{
+            // TODO: switch to bear page
+        });
+
 
     }
 }

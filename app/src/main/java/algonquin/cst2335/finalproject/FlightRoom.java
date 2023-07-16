@@ -57,10 +57,15 @@ public class FlightRoom extends AppCompatActivity {
             editor.putString("inputFlight", binding.textInput.getText().toString());
             editor.apply();
 
-            Toast.makeText(this,binding.textInput.getText().toString(),Toast.LENGTH_LONG).show();
-
+            Toast.makeText(this, "search and load flight:" + binding.textInput.getText().toString(),Toast.LENGTH_LONG).show();
             // TODO: search the input value online, and load it into RecyclerView
 
+        });
+
+        //OnClickListener for favorite button
+        binding.favoriteButton.setOnClickListener(click ->{
+            Toast.makeText(this, "It will load saved flights",Toast.LENGTH_LONG).show();
+            // TODO: load saved flights into RecyclerView
         });
 
         // initialize myAdapter
@@ -152,59 +157,26 @@ public class FlightRoom extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        // TODO: need to adjust here, the remove part
-        if (item.getItemId() == R.id.savedFlights) {
+        if (item.getItemId() == R.id.currency) {
+            Toast.makeText(this, "Switch to currency",Toast.LENGTH_LONG).show();
+            // TODO: add code to switch to currency page
+        } else if(item.getItemId() == R.id.trivia){
+            Toast.makeText(this, "Switch to trivia",Toast.LENGTH_LONG).show();
+            // TODO: add code to switch to trivia page
+        } else if(item.getItemId() == R.id.bear){
+            Toast.makeText(this, "Switch to bear",Toast.LENGTH_LONG).show();
+            // TODO: add code to switch to bear page
+        } else if (item.getItemId() == R.id.help) {
             RecyclerView recycleView = findViewById(R.id.recycleView);
             AlertDialog.Builder builder = new AlertDialog.Builder(FlightRoom.this);
-            builder.setMessage("Do you want to show your saved flights?")
-                    .setTitle("Question:")
-                    .setPositiveButton("Yes", (dialog, cl) -> {
-                        //create a Snackbar to show a message
-                        Snackbar.make(recycleView, "Your flights will show", Snackbar.LENGTH_LONG)
-                                .setAction("Undo", clk -> {
-                                    Toast.makeText(this, "Action Undo", Toast.LENGTH_LONG).show();
-                                })
+            builder.setMessage("Type the flight code, and click Search button to search related information.")
+                    .setTitle("Instruction:")
+                    .setPositiveButton("OK", (dialog, cl) -> {
+                        Snackbar.make(recycleView,"You clicked yes",Snackbar.LENGTH_LONG)
+                                .setAction("Undo", clk -> {  })
                                 .show();
                     })
-                    .setNegativeButton("No", (dialog, cl) -> {
-                    })
                     .create().show();
-
-            // click option to delete this message
-//            TextView destinationText = findViewById(R.id.destination);
-//            AlertDialog.Builder builder = new AlertDialog.Builder(FlightRoom.this);
-//            builder.setMessage("Do you want to delete the message: " + destinationText.getText())
-//                    .setTitle("Question:")
-//                    .setPositiveButton("Yes", (dialog, cl) -> {
-//                        //delete the message on screen
-//                        FlightInfo removedFlight = flights.remove(position);
-//                        // myAdapter.notifyItemRemoved(position);
-//
-//                        //delete the message in database
-//                        Executor threadA = Executors.newSingleThreadExecutor();
-//                        threadA.execute(() -> {
-//                            myDAO.deleteFlightInfo(removedFlight);
-//                        });
-//
-//                        //create a Snackbar to show a message
-//                        Snackbar.make(destinationText, "You deleted message #" + position, Snackbar.LENGTH_LONG)
-//                                .setAction("Undo", clk -> {
-//                                    flights.add(position, removedFlight);
-//                                    myAdapter.notifyItemInserted(position);
-//                                    //add the deleted message back in database
-//                                    Executor threadB = Executors.newSingleThreadExecutor();
-//                                    threadB.execute(() -> {
-//                                        myDAO.insertFlightInfo(removedFlight);
-//                                    });
-//                                })
-//                                .show();
-//                    })
-//                    .setNegativeButton("No", (dialog, cl) -> {
-//                    })
-//                    .create().show();
-
-        } else if (item.getItemId() == R.id.about) {
-            Toast.makeText(this, "Version 1.0, created by Yutian Cai", Toast.LENGTH_LONG).show();
         }
         return true;
     }
@@ -220,7 +192,6 @@ public class FlightRoom extends AppCompatActivity {
 //            terminalText = itemView.findViewById(R.id.terminal);
 //
 //            itemView.setOnClickListener(click -> {
-//                // TODO:need to adjust here
 ////                position = getAbsoluteAdapterPosition();
 //
 //                // click message to show details of it

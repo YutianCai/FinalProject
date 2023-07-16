@@ -3,14 +3,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/savedFlights"
-        android:icon="@drawable/favorites"
-        android:title="@string/saved_flights"
-        app:showAsAction="ifRoom" />
+        android:id="@+id/currency"
+        android:icon="@drawable/currency"
+        android:title="@string/currency"
+        app:showAsAction="always" />
 
     <item
-        android:id="@+id/about"
-        android:title="@string/about"
+        android:id="@+id/trivia"
+        android:icon="@drawable/trivia"
+        android:title="@string/trivia"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/bear"
+        android:icon="@drawable/bear"
+        android:title="@string/bear"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/help"
+        android:title="@string/help"
         app:showAsAction="never" />
 
 </menu>
