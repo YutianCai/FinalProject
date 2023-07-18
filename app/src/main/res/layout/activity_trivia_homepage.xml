@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TriviaHomepage">
+
+    <EditText
+        android:id="@+id/userName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Username"
+        tools:layout_editor_absoluteX="100dp"
+        tools:layout_editor_absoluteY="526dp" />
+
+    <Button
+        android:id="@+id/nextPage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="160dp"
+        android:text="Next"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_editor_absoluteY="611dp" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="122dp"
+        tools:layout_editor_absoluteY="95dp">
+
+        <RadioButton
+            android:id="@+id/geography"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Geography"
+            tools:layout_editor_absoluteX="44dp"
+            tools:layout_editor_absoluteY="102dp" />
+
+        <RadioButton
+            android:id="@+id/Sport"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sport"
+            tools:layout_editor_absoluteX="44dp"
+            tools:layout_editor_absoluteY="158dp" />
+
+        <RadioButton
+            android:id="@+id/Mythology"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mythology"
+            tools:layout_editor_absoluteX="44dp"
+            tools:layout_editor_absoluteY="158dp" />
+
+        <RadioButton
+            android:id="@+id/Science"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Science"
+            tools:layout_editor_absoluteX="44dp"
+            tools:layout_editor_absoluteY="158dp" />
+
+        <RadioButton
+            android:id="@+id/cartoonAnimation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cartoon & Animation"
+            tools:layout_editor_absoluteX="220dp"
+            tools:layout_editor_absoluteY="158dp" />
+
+        <RadioButton
+            android:id="@+id/vehicles"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Vehicles"
+            tools:layout_editor_absoluteX="220dp"
+            tools:layout_editor_absoluteY="102dp" />
+
+        <RadioButton
+            android:id="@+id/videoGame"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Video Game"
+            tools:layout_editor_absoluteX="220dp"
+            tools:layout_editor_absoluteY="296dp" />
+
+        <RadioButton
+            android:id="@+id/Animals"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Animals"
+            tools:layout_editor_absoluteX="220dp"
+            tools:layout_editor_absoluteY="225dp" />
+
+    </RadioGroup>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
