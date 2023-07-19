@@ -3,6 +3,7 @@ package algonquin.cst2335.finalproject;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
@@ -46,6 +47,7 @@ public class Rank extends AppCompatActivity {
         binding = ActivityRankBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         setSupportActionBar(binding.rankMenu);
+        binding.recycleView.setLayoutManager(new LinearLayoutManager(this));
 
 
         GradeDatabase db = Room.databaseBuilder(getApplicationContext(), GradeDatabase.class, "database-name").build();
@@ -55,20 +57,23 @@ public class Rank extends AppCompatActivity {
 
 
 
-            gradeModel.grades.setValue(grades = new ArrayList<>());
+        gradeModel.grades.setValue(grades = new ArrayList<>());
+
+        Executor thread = Executors.newSingleThreadExecutor();
+        thread.execute(() ->
+        {
+            grades.addAll(gDAO.getAllMessages());
             myAdapter = new MyAdapter(grades);
-            Executor thread = Executors.newSingleThreadExecutor();
-            thread.execute(() ->
-            {
-                grades.addAll(gDAO.getAllMessages());
-                runOnUiThread(() -> {
+            runOnUiThread(() -> {
 
-                            binding.recycleView.setAdapter(myAdapter);
-                        }
-                ); //You can then load the RecyclerView
+                        binding.recycleView.setAdapter(myAdapter);
+                    }
+            ); //You can then load the RecyclerView
 
 
-            });
+        });
+
+
 
 
 

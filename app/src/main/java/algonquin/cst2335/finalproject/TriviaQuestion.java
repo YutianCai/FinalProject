@@ -77,15 +77,16 @@ public class TriviaQuestion extends AppCompatActivity {
 
 
         String Url = "https://opentdb.com/api.php?amount=10&category="+optionId+"&type=multiple";
-        Log.d("Oncreate", "before the request");
+        Log.d("Oncreate", "before the request "+Url);
 
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, Url, null,
                 (response)->{
-
-                    JSONArray questionArray = null;
                     Log.d("Oncreate", "before the try");
+                    JSONArray questionArray;
+
                     try {
+                        Log.d("Oncreate", "try first");
                         questionArray = response.getJSONArray("results");
                         Log.d("Oncreate", "first line of the try");
                         ArrayList<Question> questions= new ArrayList<>();
@@ -177,7 +178,7 @@ public class TriviaQuestion extends AppCompatActivity {
     }
 
     public boolean validateQuestion(){
-        return true;
+        return false;
     }
 
 
