@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <item
+        android:id="@+id/flight"
+        android:icon="@drawable/flight"
+        android:title="@string/flight"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/bear"
+        android:icon="@drawable/bear"
+        android:title="@string/bear"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/trivia"
+        android:icon="@drawable/trivia"
+        android:title="@string/trivia"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/help"
+        android:title="help"
+        app:showAsAction="never" />
+</menu>

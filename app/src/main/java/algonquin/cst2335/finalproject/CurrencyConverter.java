@@ -3,11 +3,17 @@ package algonquin.cst2335.finalproject;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 
@@ -64,4 +70,39 @@ public class CurrencyConverter extends AppCompatActivity {
         });
 
 }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        // load a Menu layout file
+        getMenuInflater().inflate(R.menu.menu_currency, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.flight) {
+            Toast.makeText(this, "Switch to flight",Toast.LENGTH_LONG).show();
+            // TODO: add code to switch to currency page
+        } else if(item.getItemId() == R.id.bear){
+            Toast.makeText(this, "Switch to bear",Toast.LENGTH_LONG).show();
+            // TODO: add code to switch to bear page
+        } else if(item.getItemId() == R.id.trivia){
+            Toast.makeText(this, "Switch to trivia",Toast.LENGTH_LONG).show();
+            // TODO: add code to switch to trivia page
+        } else if (item.getItemId() == R.id.help) {
+            RecyclerView recycleView = findViewById(R.id.recycleView);
+            AlertDialog.Builder builder = new AlertDialog.Builder(CurrencyConverter.this);
+                builder.setMessage("Some instruction here.")
+                        .setTitle("Instruction:")
+                        .setPositiveButton("OK", (dialog, click) -> {
+                            Snackbar.make(recycleView,"You clicked yes",Snackbar.LENGTH_LONG)
+                                    .setAction("Undo", clk -> {  })
+                                    .show();
+                        })
+                        .setNegativeButton("No", (dialog, click) -> {
+                        })
+                        .create().show();
+                    }
+        return true;
+    }
 }
