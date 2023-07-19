@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import algonquin.cst2335.finalproject.databinding.ActivityMainBinding;
 
+import algonquin.cst2335.finalproject.databinding.ActivityMainBinding;
+
 public class MainActivity extends AppCompatActivity {
 
     protected ActivityMainBinding mainBinding;
@@ -23,7 +25,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
         mainBinding.currency.setOnClickListener(clk ->{
-            // TODO: switch to currency page
+            Intent nextPage = new Intent(MainActivity.this, CurrencyConverter.class);
+            startActivity(nextPage);
         });
 
         mainBinding.trivia.setOnClickListener(clk ->{
@@ -36,4 +39,3 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-}
