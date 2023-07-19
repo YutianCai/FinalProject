@@ -5,6 +5,11 @@
     <string name="currency">Currency Converter</string>
     <string name="trivia">Trivia Question </string>
     <string name="bear">Bear Image </string>
+    <string name="type_here">Type flight here </string>
+    <string name="favorite">Favorite </string>
+    <string name="search">Search </string>
+    <string name="saved_flights">Saved flights</string>
+    <string name="help">Help </string>
 
     <string-array name="currency_codes">
         <item>CAD</item>
@@ -40,4 +45,5 @@
         <item>KRW</item>
         <item>MYR</item>
     </string-array>
+  
 </resources>

@@ -1,9 +1,9 @@
 package algonquin.cst2335.finalproject;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
+import algonquin.cst2335.finalproject.databinding.ActivityMainBinding;
 
 import algonquin.cst2335.finalproject.databinding.ActivityMainBinding;
 
@@ -14,19 +14,18 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         mainBinding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(mainBinding.getRoot());
 
         mainBinding.flight.setOnClickListener(clk ->{
-            // TODO: switch to flight room page
+            // Intent tells you where to go next; FlightRoom.class calls the constructor
+            Intent nextPage = new Intent(MainActivity.this, FlightRoom.class);
+            // does the transition:
+            startActivity(nextPage);
         });
 
         mainBinding.currency.setOnClickListener(clk ->{
-
-            // Intent tells you where to go next; CurrencyConverter.class calls the constructor
             Intent nextPage = new Intent(MainActivity.this, CurrencyConverter.class);
-            // does the transition:
             startActivity(nextPage);
         });
 
@@ -37,9 +36,6 @@ public class MainActivity extends AppCompatActivity {
         mainBinding.bear.setOnClickListener(clk ->{
             // TODO: switch to bear page
         });
-
-
-    }
 
 
     }
