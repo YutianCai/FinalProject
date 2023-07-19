@@ -42,17 +42,17 @@ public class CurrencyConverter extends AppCompatActivity {
         // get the value typed last time, and set it into text view
         SharedPreferences prefs = getSharedPreferences("Currency", Context.MODE_PRIVATE);
         String inputCurrency = prefs.getString("inputCurrency", "");
-        binding.tilFrom.getEditText().setText(inputCurrency); // Set text to TextInputEditText
+        binding.tilFrom.setText(inputCurrency); // Set text to TextInputEditText
 
 
         //OnClickListener for Convert button
         binding.btnConvert.setOnClickListener(click ->{
             // save the input value into SharedPreferences
             SharedPreferences.Editor editor = prefs.edit();
-            editor.putString("inputCurrency", binding.tilFrom.getEditText().toString());
+            editor.putString("inputCurrency", binding.tilFrom.getText().toString());
             editor.apply();
 
-            Toast.makeText(this, "Convert :" + binding.tilFrom.getEditText().toString(),Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Convert :" + binding.tilFrom.getText().toString(),Toast.LENGTH_LONG).show();
             // TODO: search the input value online, and load it into RecyclerView
 
         });
