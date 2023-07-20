@@ -1,10 +1,9 @@
 package algonquin.cst2335.finalproject;
 
 import androidx.appcompat.app.AppCompatActivity;
+import android.widget.Button;
 import android.content.Intent;
 import android.os.Bundle;
-import algonquin.cst2335.finalproject.databinding.ActivityMainBinding;
-
 import algonquin.cst2335.finalproject.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
@@ -34,8 +33,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         mainBinding.bear.setOnClickListener(clk ->{
-            // TODO: switch to bear page
+            Intent bear = new Intent( MainActivity.this, BearHomepage.class);
+            startActivity(bear);
         });
-
-
     }

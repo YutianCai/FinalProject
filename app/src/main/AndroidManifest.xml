@@ -15,9 +15,15 @@
         android:theme="@style/Theme.FinalProject"
         tools:targetApi="31">
         <activity
+            android:name=".BearHomepage"
+            android:exported="false" />
+        </activity>
+  
+        <activity
             android:name=".FlightRoom"
             android:exported="false">
         </activity>
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
