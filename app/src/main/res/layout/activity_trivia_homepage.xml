@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TriviaHomepage">
+
+    <EditText
+        android:id="@+id/userName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:ems="10"
+        android:hint="Username"
+        android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/nextPage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/nextPage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="28dp"
+        android:text="Next"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/userName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <RadioButton
+            android:id="@+id/geography"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:tag="22"
+            android:text="Geography"
+            tools:layout_editor_absoluteX="44dp"
+            tools:layout_editor_absoluteY="102dp" />
+
+        <RadioButton
+            android:id="@+id/Sport"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:tag="21"
+            android:text="Sport"
+            tools:layout_editor_absoluteX="44dp"
+            tools:layout_editor_absoluteY="158dp" />
+
+        <RadioButton
+            android:id="@+id/Mythology"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:tag="20"
+            android:text="Mythology"
+            tools:layout_editor_absoluteX="44dp"
+            tools:layout_editor_absoluteY="158dp" />
+
+        <RadioButton
+            android:id="@+id/Science"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:tag="19"
+            android:text="Science"
+            tools:layout_editor_absoluteX="44dp"
+            tools:layout_editor_absoluteY="158dp" />
+
+        <RadioButton
+            android:id="@+id/cartoonAnimation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:tag="32"
+            android:text="Cartoon and Animation"
+            tools:layout_editor_absoluteX="220dp"
+            tools:layout_editor_absoluteY="158dp" />
+
+        <RadioButton
+            android:id="@+id/vehicles"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:tag="28"
+            android:text="Vehicles"
+            tools:layout_editor_absoluteX="220dp"
+            tools:layout_editor_absoluteY="102dp" />
+
+        <RadioButton
+            android:id="@+id/videoGame"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:tag="15"
+            android:text="Video Game"
+            tools:layout_editor_absoluteX="220dp"
+            tools:layout_editor_absoluteY="296dp" />
+
+        <RadioButton
+            android:id="@+id/Animals"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:tag="29"
+            android:text="Animals"
+            tools:layout_editor_absoluteX="220dp"
+            tools:layout_editor_absoluteY="225dp" />
+
+    </RadioGroup>
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/homePageMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="Choose one topic"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@+id/radioGroup"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/homePageMenu"
+        app:layout_constraintVertical_bias="0.49" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
