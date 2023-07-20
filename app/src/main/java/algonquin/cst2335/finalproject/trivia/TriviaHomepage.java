@@ -1,4 +1,4 @@
-package algonquin.cst2335.finalproject;
+package algonquin.cst2335.finalproject.trivia;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,7 +19,12 @@ import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
 
+import algonquin.cst2335.finalproject.MainActivity;
+import algonquin.cst2335.finalproject.R;
+import algonquin.cst2335.finalproject.bear.BearHomepage;
+import algonquin.cst2335.finalproject.currency.CurrencyConverter;
 import algonquin.cst2335.finalproject.databinding.ActivityTriviaHomepageBinding;
+import algonquin.cst2335.finalproject.flight.FlightRoom;
 
 public class TriviaHomepage extends AppCompatActivity {
     ActivityTriviaHomepageBinding binding;
@@ -29,30 +34,36 @@ public class TriviaHomepage extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         super.onOptionsItemSelected(item);
 
-        if(item.getItemId()==R.id.help) {
+        if (item.getItemId() == R.id.currency) {
+            Intent currency = new Intent(TriviaHomepage.this, CurrencyConverter.class);
+            startActivity(currency);
+        } else if(item.getItemId() == R.id.flight){
+            Intent flight = new Intent(TriviaHomepage.this, FlightRoom.class);
+            startActivity(flight);
+        } else if(item.getItemId() == R.id.bear) {
+            Intent bear = new Intent(TriviaHomepage.this, BearHomepage.class);
+            startActivity(bear);
+        } else if(item.getItemId()== R.id.help) {
             AlertDialog.Builder builder = new AlertDialog.Builder(TriviaHomepage.this);
             builder.setTitle("About this program: ");
             builder.setMessage("This program is used for take a quiz and rank your answer.");
             builder.setPositiveButton("OK", (dialog, cl) -> {
             });
             builder.create().show();
-        }
-        if(item.getItemId()==R.id.main) {
+        }else if(item.getItemId()==R.id.main) {
             Snackbar.make(binding.getRoot(), "Do you want to go to the main page?", Snackbar.LENGTH_LONG)
                     .setAction("Yes", click -> {
                         startActivity(new Intent(TriviaHomepage.this, MainActivity.class));
                     })
                     .show();
         }
-
-
         return true;
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
-        getMenuInflater().inflate(R.menu.my_menu, menu);
+        getMenuInflater().inflate(R.menu.menu_trivia, menu);
         getSupportActionBar().setTitle("Trivia Question");
         return true;
     }
@@ -96,11 +107,6 @@ public class TriviaHomepage extends AppCompatActivity {
             }
 
         });
-
-
-
-
-
     }
     // validate if it is okay
     public boolean ValidateNextPage(RadioGroup r, EditText name){

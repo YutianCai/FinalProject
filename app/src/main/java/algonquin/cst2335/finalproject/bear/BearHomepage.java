@@ -1,4 +1,4 @@
-package algonquin.cst2335.finalproject;
+package algonquin.cst2335.finalproject.bear;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -14,7 +14,12 @@ import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
 
+import algonquin.cst2335.finalproject.MainActivity;
+import algonquin.cst2335.finalproject.R;
+import algonquin.cst2335.finalproject.currency.CurrencyConverter;
 import algonquin.cst2335.finalproject.databinding.ActivityBearHomepageBinding;
+import algonquin.cst2335.finalproject.flight.FlightRoom;
+import algonquin.cst2335.finalproject.trivia.TriviaHomepage;
 
 public class BearHomepage extends AppCompatActivity {
    ActivityBearHomepageBinding binding;
@@ -54,30 +59,36 @@ public class BearHomepage extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         super.onOptionsItemSelected(item);
 
-        if(item.getItemId()==R.id.help) {
+        if (item.getItemId() == R.id.currency) {
+            Intent currency = new Intent(BearHomepage.this, CurrencyConverter.class);
+            startActivity(currency);
+        } else if(item.getItemId() == R.id.flight){
+            Intent flight = new Intent(BearHomepage.this, FlightRoom.class);
+            startActivity(flight);
+        } else if(item.getItemId() == R.id.trivia){
+            Intent trivia = new Intent(BearHomepage.this, TriviaHomepage.class);
+            startActivity(trivia);
+        } else if(item.getItemId()==R.id.help) {
             AlertDialog.Builder builder = new AlertDialog.Builder(BearHomepage.this);
             builder.setTitle("About this program: ");
             builder.setMessage("This program is used for generate bear images.");
             builder.setPositiveButton("OK", (dialog, cl) -> {
             });
             builder.create().show();
-        }
-        if(item.getItemId()==R.id.main) {
+        }else if(item.getItemId()==R.id.main) {
             Snackbar.make(binding.getRoot(), "Do you want to go to the main page?", Snackbar.LENGTH_LONG)
                     .setAction("Yes", click -> {
                         startActivity(new Intent(BearHomepage.this, MainActivity.class));
                     })
                     .show();
         }
-
-
         return true;
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
-        getMenuInflater().inflate(R.menu.my_menu, menu);
+        getMenuInflater().inflate(R.menu.menu_bear, menu);
         getSupportActionBar().setTitle("Bear Image");
         return true;
     }

@@ -1,13 +1,11 @@
-package algonquin.cst2335.finalproject;
+package algonquin.cst2335.finalproject.trivia;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -37,8 +35,9 @@ import java.util.Date;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
+import algonquin.cst2335.finalproject.MainActivity;
+import algonquin.cst2335.finalproject.R;
 import algonquin.cst2335.finalproject.databinding.ActivityTriviaQuestionBinding;
-import algonquin.cst2335.finalproject.databinding.QuestionBinding;
 
 public class TriviaQuestion extends AppCompatActivity {
 
@@ -210,7 +209,7 @@ public class TriviaQuestion extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
-        getMenuInflater().inflate(R.menu.my_menu, menu);
+        getMenuInflater().inflate(R.menu.menu_trivia, menu);
         getSupportActionBar().setTitle("Trivia Question");
         return true;
     }

@@ -1,18 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
         android:id="@+id/flight"
         android:icon="@drawable/flight"
         android:title="@string/flight"
-        app:showAsAction="always" />
-
-    <item
-        android:id="@+id/bear"
-        android:icon="@drawable/bear"
-        android:title="@string/bear"
         app:showAsAction="always" />
 
     <item
@@ -22,12 +15,18 @@
         app:showAsAction="always" />
 
     <item
+        android:id="@+id/currency"
+        android:icon="@drawable/currency"
+        android:title="@string/currency"
+        app:showAsAction="always" />
+
+    <item
         android:id="@+id/main"
         android:title="@string/main_page"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/help"
-        android:title="help"
+        android:title="@string/help"
         app:showAsAction="never" />
 </menu>

@@ -1,4 +1,4 @@
-package algonquin.cst2335.finalproject;
+package algonquin.cst2335.finalproject.currency;
 
 import androidx.room.Dao;
 import androidx.room.Delete;

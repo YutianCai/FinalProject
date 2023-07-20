@@ -1,6 +1,7 @@
-package algonquin.cst2335.finalproject;
+package algonquin.cst2335.finalproject.currency;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
@@ -17,7 +18,12 @@ import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 
+import algonquin.cst2335.finalproject.MainActivity;
+import algonquin.cst2335.finalproject.R;
+import algonquin.cst2335.finalproject.bear.BearHomepage;
 import algonquin.cst2335.finalproject.databinding.ActivityCurrencyBinding;
+import algonquin.cst2335.finalproject.flight.FlightRoom;
+import algonquin.cst2335.finalproject.trivia.TriviaHomepage;
 
 public class CurrencyConverter extends AppCompatActivity {
     protected ActivityCurrencyBinding binding;
@@ -75,20 +81,27 @@ public class CurrencyConverter extends AppCompatActivity {
         super.onCreateOptionsMenu(menu);
         // load a Menu layout file
         getMenuInflater().inflate(R.menu.menu_currency, menu);
+        getSupportActionBar().setTitle("Currency Converter");
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.flight) {
-            Toast.makeText(this, "Switch to flight",Toast.LENGTH_LONG).show();
-            // TODO: add code to switch to currency page
+            Intent flight = new Intent(CurrencyConverter.this, FlightRoom.class);
+            startActivity(flight);
         } else if(item.getItemId() == R.id.bear){
-            Toast.makeText(this, "Switch to bear",Toast.LENGTH_LONG).show();
-            // TODO: add code to switch to bear page
+            Intent bear = new Intent(CurrencyConverter.this, BearHomepage.class);
+            startActivity(bear);
         } else if(item.getItemId() == R.id.trivia){
-            Toast.makeText(this, "Switch to trivia",Toast.LENGTH_LONG).show();
-            // TODO: add code to switch to trivia page
+            Intent trivia = new Intent(CurrencyConverter.this, TriviaHomepage.class);
+            startActivity(trivia);
+        }else if (item.getItemId()==R.id.main) {
+            Snackbar.make(binding.getRoot(), "Do you want to go to the main page?", Snackbar.LENGTH_LONG)
+                    .setAction("Yes", click -> {
+                        startActivity(new Intent(CurrencyConverter.this, MainActivity.class));
+                    })
+                    .show();
         } else if (item.getItemId() == R.id.help) {
             RecyclerView recycleView = findViewById(R.id.recycleView);
             AlertDialog.Builder builder = new AlertDialog.Builder(CurrencyConverter.this);

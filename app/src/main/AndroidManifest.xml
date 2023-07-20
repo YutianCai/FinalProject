@@ -26,29 +26,26 @@
         </activity>
       
         <activity
-            android:name=".Rank"
+            android:name=".trivia.Rank"
             android:exported="false" />
         <activity
-            android:name=".TriviaHomepage"
+            android:name=".trivia.TriviaHomepage"
             android:exported="false" />
         <activity
-            android:name=".TriviaQuestion"
+            android:name=".trivia.TriviaQuestion"
             android:exported="false" />
       
         <activity
-            android:name=".FlightRoom"
-            android:exported="false">
-        </activity>
+            android:name=".flight.FlightRoom"
+            android:exported="false"/>
 
         <activity
-            android:name=".BearHomepage"
+            android:name=".bear.BearHomepage"
             android:exported="false" />
-        </activity>
 
         <activity
-            android:name=".CurrencyConverter"
-            android:exported="true">
-        </activity>
+            android:name=".currency.CurrencyConverter"
+            android:exported="true"/>
 
     </application>
 
