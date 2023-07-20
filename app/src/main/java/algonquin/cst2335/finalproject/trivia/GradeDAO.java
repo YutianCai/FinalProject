@@ -1,7 +1,6 @@
-package algonquin.cst2335.finalproject;
+package algonquin.cst2335.finalproject.trivia;
 
 import androidx.room.Dao;
-import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 

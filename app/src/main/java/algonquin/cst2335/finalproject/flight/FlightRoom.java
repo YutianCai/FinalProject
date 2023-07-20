@@ -1,28 +1,27 @@
-package algonquin.cst2335.finalproject;
+package algonquin.cst2335.finalproject.flight;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.room.Room;
+
 import com.google.android.material.snackbar.Snackbar;
 import java.util.ArrayList;
-import java.util.concurrent.Executor;
-import java.util.concurrent.Executors;
 
+import algonquin.cst2335.finalproject.MainActivity;
+import algonquin.cst2335.finalproject.R;
+import algonquin.cst2335.finalproject.bear.BearHomepage;
+import algonquin.cst2335.finalproject.currency.CurrencyConverter;
 import algonquin.cst2335.finalproject.databinding.ActivityFlightBinding;
-import algonquin.cst2335.finalproject.databinding.RowHolderFlightBinding;
+import algonquin.cst2335.finalproject.trivia.TriviaHomepage;
 
 public class FlightRoom extends AppCompatActivity {
 
@@ -152,20 +151,27 @@ public class FlightRoom extends AppCompatActivity {
         super.onCreateOptionsMenu(menu);
         // load a Menu layout file
         getMenuInflater().inflate(R.menu.menu_flight, menu);
+        getSupportActionBar().setTitle("Flight Tracker");
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.currency) {
-            Toast.makeText(this, "Switch to currency",Toast.LENGTH_LONG).show();
-            // TODO: add code to switch to currency page
+            Intent currency = new Intent(FlightRoom.this, CurrencyConverter.class);
+            startActivity(currency);
         } else if(item.getItemId() == R.id.trivia){
-            Toast.makeText(this, "Switch to trivia",Toast.LENGTH_LONG).show();
-            // TODO: add code to switch to trivia page
-        } else if(item.getItemId() == R.id.bear){
-            Toast.makeText(this, "Switch to bear",Toast.LENGTH_LONG).show();
-            // TODO: add code to switch to bear page
+            Intent trivia = new Intent(FlightRoom.this, TriviaHomepage.class);
+            startActivity(trivia);
+        } else if(item.getItemId() == R.id.bear) {
+            Intent bear = new Intent(FlightRoom.this, BearHomepage.class);
+            startActivity(bear);
+        }else if (item.getItemId()==R.id.main) {
+            Snackbar.make(binding.getRoot(), "Do you want to go to the main page?", Snackbar.LENGTH_LONG)
+                    .setAction("Yes", click -> {
+                        startActivity(new Intent(FlightRoom.this, MainActivity.class));
+                    })
+                    .show();
         } else if (item.getItemId() == R.id.help) {
             RecyclerView recycleView = findViewById(R.id.recycleView);
             AlertDialog.Builder builder = new AlertDialog.Builder(FlightRoom.this);

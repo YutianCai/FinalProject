@@ -1,4 +1,4 @@
-package algonquin.cst2335.finalproject;
+package algonquin.cst2335.finalproject.currency;
 import androidx.room.Database;
 import androidx.room.RoomDatabase;
 

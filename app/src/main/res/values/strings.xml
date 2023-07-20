@@ -9,6 +9,7 @@
     <string name="favorite">Favorite </string>
     <string name="search">Search </string>
     <string name="saved_flights">Saved flights</string>
+    <string name="main_page">Main Page </string>
     <string name="help">Help </string>
 
     <string-array name="currency_codes">
@@ -45,5 +46,6 @@
         <item>KRW</item>
         <item>MYR</item>
     </string-array>
-  
+    <string name="about">About</string>
+
 </resources>
