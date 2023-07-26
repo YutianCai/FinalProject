@@ -121,8 +121,7 @@ public class FlightRoom extends AppCompatActivity {
                     (response) -> {
                             try{
                                 JSONArray data = response.getJSONArray("data");
-                                // TODO: changed number to test here
-                                for(int i = 0; i < 20; i++) {
+                                for(int i = 0; i < data.length(); i++) {
                                     JSONObject flight = data.getJSONObject(i);
                                     JSONObject departure = flight.getJSONObject("departure");
                                     JSONObject arrival = flight.getJSONObject("arrival");
