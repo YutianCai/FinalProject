@@ -6,6 +6,9 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import java.util.List;
 
+/**
+ * An interface of FlightInfoDAO
+ */
 @Dao
 public interface FlightInfoDAO {
     @Insert

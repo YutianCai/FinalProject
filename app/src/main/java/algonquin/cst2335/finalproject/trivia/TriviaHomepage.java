@@ -64,7 +64,7 @@ public class TriviaHomepage extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
         getMenuInflater().inflate(R.menu.menu_trivia, menu);
-        getSupportActionBar().setTitle("Trivia Question");
+        getSupportActionBar().setTitle(R.string.trivia);
         return true;
     }
 

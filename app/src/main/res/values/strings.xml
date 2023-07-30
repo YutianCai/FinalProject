@@ -3,14 +3,30 @@
     <string name="final_project">Final Project</string>
     <string name="flight">Flight Tracker</string>
     <string name="currency">Currency Converter</string>
-    <string name="trivia">Trivia Question </string>
-    <string name="bear">Bear Image </string>
-    <string name="type_here">Type flight here </string>
-    <string name="favorite">Favorite </string>
+    <string name="trivia">Trivia Question</string>
+    <string name="bear">Bear Image</string>
+    <string name="type_here">Type flight here</string>
+    <string name="favorite">Favorite</string>
     <string name="search">Search </string>
     <string name="saved_flights">Saved flights</string>
-    <string name="main_page">Main Page </string>
+    <string name="main_page">Main Page</string>
     <string name="help">Help </string>
+    <string name="goToMainPage">Do you want to go to the main page?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="flightInstruction">Type the flight code, and click Search button to search related information. Click Favorite button to show saved flights.</string>
+    <string name="instruction">Instruction:</string>
+    <string name="ok">OK</string>
+    <string name="failToSearchOnline">Fail to search online</string>
+    <string name="destination">Destination</string>
+    <string name="terminal">Terminal</string>
+    <string name="gate">Gate</string>
+    <string name="delay">Delay</string>
+    <string name="youSavedFlight">You saved this flight</string>
+    <string name="youDeletedFlight">You deleted this flight</string>
+    <string name="undo">Undo</string>
+    <string name="delete">Delete</string>
+    <string name="save">Save</string>
 
     <string-array name="currency_codes">
         <item>CAD</item>

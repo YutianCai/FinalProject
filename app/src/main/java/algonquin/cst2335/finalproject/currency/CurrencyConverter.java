@@ -81,7 +81,7 @@ public class CurrencyConverter extends AppCompatActivity {
         super.onCreateOptionsMenu(menu);
         // load a Menu layout file
         getMenuInflater().inflate(R.menu.menu_currency, menu);
-        getSupportActionBar().setTitle("Currency Converter");
+        getSupportActionBar().setTitle(R.string.currency);
         return true;
     }
 

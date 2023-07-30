@@ -9,8 +9,24 @@
     <string name="search">搜索</string>
     <string name="saved_flights">收藏的航班</string>
     <string name="main_page">主页</string>
+    <string name="goToMainPage">是否确认回到主页？</string>
+    <string name="yes">是</string>
     <string name="about">关于</string>
     <string name="type_here">在这里输入</string>
     <string name="favorite">收藏</string>
     <string name="help">帮助</string>
+    <string name="no">否</string>
+    <string name="flightInstruction">输入航站号，点击搜索按钮搜索相关信息。点击收藏按钮显示收藏的航班。</string>
+    <string name="instruction">操作指南</string>
+    <string name="ok">好的</string>
+    <string name="failToSearchOnline">联网搜索失败</string>
+    <string name="destination">目的地</string>
+    <string name="gate">登机口</string>
+    <string name="delay">延误</string>
+    <string name="terminal">航站楼</string>
+    <string name="youSavedFlight">你已保存此航线</string>
+    <string name="undo">撤销</string>
+    <string name="youDeletedFlight">你已删除此航线</string>
+    <string name="delete">删除</string>
+    <string name="save">保存</string>
 </resources>
