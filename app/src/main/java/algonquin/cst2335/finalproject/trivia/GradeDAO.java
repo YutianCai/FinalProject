@@ -11,8 +11,9 @@ public interface GradeDAO {
     @Insert
     public long insertGrade(Grade g);
 
-    @Query("Select * from Grade order by grade desc")
+    @Query("Select * from Grade order by grade desc LIMIT 10")
     public List<Grade> getAllMessages();
+
 
 
 

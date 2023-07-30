@@ -10,7 +10,10 @@ public class Grade {
     String username;
 
     @ColumnInfo(name="grade")
-    int grade;
+    double grade;
+
+    @ColumnInfo(name="questionNumber")
+    int questionNumber;
 
     @ColumnInfo(name = "timesent")
     String timesent;
@@ -22,9 +25,10 @@ public class Grade {
     @ColumnInfo (name="id")
     public long id;
 
-    Grade(String u,int g,String t,String c){
+    Grade(String u,double g,int qn, String t,String c){
         username = u;
         grade = g;
+        questionNumber = qn;
         timesent = t;
         category = c;
     }
@@ -36,7 +40,7 @@ public class Grade {
     public String getTimesent(){
         return timesent;
     }
-    public int getGrade(){
+    public double getGrade(){
         return grade;
     }
 
@@ -46,6 +50,10 @@ public class Grade {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public int getQuestionNumber() {
+        return questionNumber;
     }
 
 }

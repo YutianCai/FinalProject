@@ -30,43 +30,7 @@ public class TriviaHomepage extends AppCompatActivity {
     ActivityTriviaHomepageBinding binding;
     private SharedPreferences prefs;
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        super.onOptionsItemSelected(item);
 
-        if (item.getItemId() == R.id.currency) {
-            Intent currency = new Intent(TriviaHomepage.this, CurrencyConverter.class);
-            startActivity(currency);
-        } else if(item.getItemId() == R.id.flight){
-            Intent flight = new Intent(TriviaHomepage.this, FlightRoom.class);
-            startActivity(flight);
-        } else if(item.getItemId() == R.id.bear) {
-            Intent bear = new Intent(TriviaHomepage.this, BearHomepage.class);
-            startActivity(bear);
-        } else if(item.getItemId()== R.id.help) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(TriviaHomepage.this);
-            builder.setTitle("About this program: ");
-            builder.setMessage("This program is used for take a quiz and rank your answer.");
-            builder.setPositiveButton("OK", (dialog, cl) -> {
-            });
-            builder.create().show();
-        }else if(item.getItemId()==R.id.main) {
-            Snackbar.make(binding.getRoot(), "Do you want to go to the main page?", Snackbar.LENGTH_LONG)
-                    .setAction("Yes", click -> {
-                        startActivity(new Intent(TriviaHomepage.this, MainActivity.class));
-                    })
-                    .show();
-        }
-        return true;
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        super.onCreateOptionsMenu(menu);
-        getMenuInflater().inflate(R.menu.menu_trivia, menu);
-        getSupportActionBar().setTitle("Trivia Question");
-        return true;
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,24 +48,24 @@ public class TriviaHomepage extends AppCompatActivity {
         setSupportActionBar(binding.homePageMenu);
 
         prefs = getSharedPreferences("MyData", Context.MODE_PRIVATE);
-        String un = prefs.getString("Username"," ");
+        String qn = prefs.getString("questionNumber"," ");
 
-        binding.userName.setText(un);
+        binding.qNumber.setText(qn);
 
         Intent nextPage = new Intent( TriviaHomepage.this,TriviaQuestion.class);
 
         // validate if it is okay to jump to next page
         np.setOnClickListener(clk -> {
-            if(ValidateNextPage(rg,binding.userName)) {
-                String name = binding.userName.getText().toString();
+            if(ValidateNextPage(rg,binding.qNumber)) {
+                String qNumber = binding.qNumber.getText().toString();
                 SharedPreferences.Editor editor = prefs.edit();
-                editor.putString("Username",name);
+                editor.putString("questionNumber",qNumber);
                 editor.apply();
                 int optionId = GetOption(rg);
                 RadioButton rb = findViewById(rg.getCheckedRadioButtonId());
 
                 nextPage.putExtra("option", optionId);
-                nextPage.putExtra("Username",name);
+                nextPage.putExtra("questionNumber",qNumber);
                 nextPage.putExtra("category",rb.getText().toString());
                 startActivity(nextPage);
             }
@@ -109,21 +73,21 @@ public class TriviaHomepage extends AppCompatActivity {
         });
     }
     // validate if it is okay
-    public boolean ValidateNextPage(RadioGroup r, EditText name){
+    public boolean ValidateNextPage(RadioGroup r, EditText qNumber){
 
 
         if(r.getCheckedRadioButtonId()!= -1){
-            if(!name.getText().toString().isEmpty()){
+            if((!qNumber.getText().toString().isEmpty())&&Integer.parseInt(qNumber.getText().toString())<=50){
                 return true;
             }
             else{
-                Toast.makeText(this,"You need to input username.",Toast.LENGTH_LONG)
+                Toast.makeText(this,"You need to input the number of question, and it need to be no larger than 50.",Toast.LENGTH_LONG)
                         .show();
                 return false;
             }
         }
-        else if(name.getText().toString().isEmpty()){
-            Toast.makeText(this,"You need to input username and choose a topic.",Toast.LENGTH_LONG)
+        else if(qNumber.getText().toString().isEmpty()){
+            Toast.makeText(this,"You need to input the number of question and choose a topic.",Toast.LENGTH_LONG)
                     .show();
             return false;
         }
@@ -142,15 +106,20 @@ public class TriviaHomepage extends AppCompatActivity {
         RadioButton option = findViewById(r.getCheckedRadioButtonId());
         int optionId = 0;
         switch (option.getText().toString()){
-            case ("Geography"):
+            case ("Geography" ):
                 optionId = 22;
                         break;
+            case ("地理" ):
+                optionId = 22;
+                break;
             case ("Sport"):
                 optionId = 21;
                 break;
+
             case ("Mythology"):
                 optionId = 20;
                 break;
+
             case ("Science"):
                 optionId = 19;
                 break;
@@ -167,12 +136,74 @@ public class TriviaHomepage extends AppCompatActivity {
                 optionId = 29;
                 break;
 
+            case ("运动"):
+                optionId = 21;
+                break;
+
+            case ("神话"):
+                optionId = 20;
+                break;
+
+            case ("科学"):
+                optionId = 19;
+                break;
+            case ("卡通和动画"):
+                optionId = 32;
+                break;
+            case ("交通工具"):
+                optionId = 28;
+                break;
+            case ("电子游戏"):
+                optionId = 15;
+                break;
+            case ("动物"):
+                optionId = 29;
+                break;
+
 
         }
 
 
         return optionId;
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        super.onOptionsItemSelected(item);
+
+        if (item.getItemId() == R.id.currency) {
+            Intent currency = new Intent(TriviaHomepage.this, CurrencyConverter.class);
+            startActivity(currency);
+        } else if(item.getItemId() == R.id.flight){
+            Intent flight = new Intent(TriviaHomepage.this, FlightRoom.class);
+            startActivity(flight);
+        } else if(item.getItemId() == R.id.bear) {
+            Intent bear = new Intent(TriviaHomepage.this, BearHomepage.class);
+            startActivity(bear);
+        } else if(item.getItemId()== R.id.help) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(TriviaHomepage.this);
+            builder.setTitle(R.string.trivia_alert_title);
+            builder.setMessage(R.string.trivia_alert_des);
+            builder.setPositiveButton(R.string.trivia_positive, (dialog, cl) -> {
+            });
+            builder.create().show();
+        }else if(item.getItemId()==R.id.main) {
+            Snackbar.make(binding.getRoot(), R.string.trivia_snackbar, Snackbar.LENGTH_LONG)
+                    .setAction(R.string.trivia_positive, click -> {
+                        startActivity(new Intent(TriviaHomepage.this, MainActivity.class));
+                    })
+                    .show();
+        }
+        return true;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        getMenuInflater().inflate(R.menu.menu_trivia, menu);
+        getSupportActionBar().setTitle(R.string.trivia_menu_title);
+        return true;
     }
 
 

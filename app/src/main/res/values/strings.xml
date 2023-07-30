@@ -1,4 +1,5 @@
 <resources>
+    <!-- Main Page -->
     <string name="app_name">FinalProject</string>
     <string name="final_project">Final Project</string>
     <string name="flight">Flight Tracker</string>
@@ -11,7 +12,9 @@
     <string name="saved_flights">Saved flights</string>
     <string name="main_page">Main Page </string>
     <string name="help">Help </string>
+    <string name="about">About</string>
 
+    <!-- Currency -->
     <string-array name="currency_codes">
         <item>CAD</item>
         <item>EUR</item>
@@ -46,6 +49,33 @@
         <item>KRW</item>
         <item>MYR</item>
     </string-array>
-    <string name="about">About</string>
 
+    <!-- Trivia -->
+    <string name="trivia_choose_a_topic">Choose a topic</string>
+    <string name="geography">Geography</string>
+    <string name="sport">Sport</string>
+    <string name="mythology">Mythology</string>
+    <string name="science">Science</string>
+    <string name="cartoon_and_animation">Cartoon and Animation</string>
+    <string name="vehicles">Vehicles</string>
+    <string name="video_game">Video Game</string>
+    <string name="animals">Animals</string>
+    <string name="trivia_next_page">Next</string>
+    <string name="trivia_menu_title">Trivia Question</string>
+    <string name="trivia_alert_title">About this program: </string>
+    <string name="trivia_alert_des">Choose a topic you want to ask about.
+        Enter the number of questions you have.
+        Click "Next" to move to the next page and begin answering the questions.
+        Select "Rank" to view the top ten scores on the leaderboard.
+        Choose "Submit" to submit your score.
+        Click "Try Again" to start the mini-quiz again.</string>
+    <string name="trivia_snackbar">Do you want to go to the main page?</string>
+    <string name="trivia_positive">Yes</string>
+    <string name="trivia_dismiss">dismiss</string>
+    <string name="trivia_username">Username:</string>
+    <string name="trivia_usernameDes">Please input your username.</string>
+    <string name="trivia_rankPage">Rank</string>
+    <string name="trivia_submit">Submit</string>
+    <string name="trivia_tryAgain">Try Again</string>
+    <string name="trivia_yourRank">Your rank is </string>
 </resources>

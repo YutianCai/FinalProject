@@ -7,13 +7,13 @@
     tools:context=".trivia.TriviaHomepage">
 
     <EditText
-        android:id="@+id/userName"
+        android:id="@+id/qNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
         android:ems="10"
-        android:hint="Username"
-        android:inputType="text"
+        android:hint="Question Number"
+        android:inputType="number"
         app:layout_constraintBottom_toTopOf="@+id/nextPage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -24,7 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="28dp"
-        android:text="Next"
+        android:text="@string/trivia_next_page"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -34,7 +34,7 @@
         android:id="@+id/radioGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/userName"
+        app:layout_constraintBottom_toTopOf="@+id/qNumber"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
@@ -43,7 +43,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:tag="22"
-            android:text="Geography"
+            android:text="@string/geography"
             tools:layout_editor_absoluteX="44dp"
             tools:layout_editor_absoluteY="102dp" />
 
@@ -52,7 +52,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:tag="21"
-            android:text="Sport"
+            android:text="@string/sport"
             tools:layout_editor_absoluteX="44dp"
             tools:layout_editor_absoluteY="158dp" />
 
@@ -61,7 +61,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:tag="20"
-            android:text="Mythology"
+            android:text="@string/mythology"
             tools:layout_editor_absoluteX="44dp"
             tools:layout_editor_absoluteY="158dp" />
 
@@ -70,7 +70,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:tag="19"
-            android:text="Science"
+            android:text="@string/science"
             tools:layout_editor_absoluteX="44dp"
             tools:layout_editor_absoluteY="158dp" />
 
@@ -79,7 +79,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:tag="32"
-            android:text="Cartoon and Animation"
+            android:text="@string/cartoon_and_animation"
             tools:layout_editor_absoluteX="220dp"
             tools:layout_editor_absoluteY="158dp" />
 
@@ -88,7 +88,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:tag="28"
-            android:text="Vehicles"
+            android:text="@string/vehicles"
             tools:layout_editor_absoluteX="220dp"
             tools:layout_editor_absoluteY="102dp" />
 
@@ -97,7 +97,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:tag="15"
-            android:text="Video Game"
+            android:text="@string/video_game"
             tools:layout_editor_absoluteX="220dp"
             tools:layout_editor_absoluteY="296dp" />
 
@@ -106,7 +106,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:tag="29"
-            android:text="Animals"
+            android:text="@string/animals"
             tools:layout_editor_absoluteX="220dp"
             tools:layout_editor_absoluteY="225dp" />
 
@@ -130,7 +130,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:text="Choose one topic"
+        android:text="@string/trivia_choose_a_topic"
         android:textSize="34sp"
         app:layout_constraintBottom_toTopOf="@+id/radioGroup"
         app:layout_constraintEnd_toEndOf="parent"

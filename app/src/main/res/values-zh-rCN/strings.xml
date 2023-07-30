@@ -13,4 +13,35 @@
     <string name="type_here">在这里输入</string>
     <string name="favorite">收藏</string>
     <string name="help">帮助</string>
+
+    <!-- Trivia -->
+    <string name="trivia_choose_a_topic">选择一个话题</string>
+    <string name="geography">地理</string>
+    <string name="sport">运动</string>
+    <string name="mythology">神话</string>
+    <string name="science">科学</string>
+    <string name="cartoon_and_animation">卡通和动画</string>
+    <string name="vehicles">交通工具</string>
+    <string name="video_game">电子游戏</string>
+    <string name="animals">动物</string>
+    <string name="trivia_next_page">下一页</string>
+    <string name="trivia_menu_title">豆知识</string>
+    <string name="trivia_alert_title">关于这个程序：</string>
+    <string name="trivia_alert_des">
+        选择你想要回答的话题。
+        输入问题的数量。
+        点击下一页开始回答问题。
+        点击排名查看分数排名前十的排行榜。
+        点击提交来上传你的分数。
+
+        点击再来一次重新开始一次小测试。</string>
+    <string name="trivia_snackbar">你要回到主页吗？</string>
+    <string name="trivia_positive">是的</string>
+    <string name="trivia_dismiss">不予理会</string>
+    <string name="trivia_username">用户名：</string>
+    <string name="trivia_usernameDes">请输入你的用户名。</string>
+    <string name="trivia_rankPage">排名</string>
+    <string name="trivia_submit">提交</string>
+    <string name="trivia_tryAgain">再来一次</string>
+    <string name="trivia_yourRank">你的排名是</string>
 </resources>

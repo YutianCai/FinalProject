@@ -2,12 +2,16 @@ package algonquin.cst2335.finalproject.trivia;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -18,6 +22,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.google.android.material.snackbar.Snackbar;
+
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
@@ -32,10 +38,13 @@ public class Rank extends AppCompatActivity {
 
     ArrayList<Grade> grades;
 
+    ArrayList<Grade> rankedGrades;
+
     GradeViewModel gradeModel;
 
     private RecyclerView.Adapter myAdapter;
 
+    private SharedPreferences prefs;
     GradeDAO gDAO;
 
     @Override
@@ -46,34 +55,42 @@ public class Rank extends AppCompatActivity {
         binding = ActivityRankBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         setSupportActionBar(binding.rankMenu);
+        Log.d("notSHow","1");
         binding.recycleView.setLayoutManager(new LinearLayoutManager(this));
 
 
-        GradeDatabase db = Room.databaseBuilder(getApplicationContext(), GradeDatabase.class, "database-name").build();
-        gDAO = db.gmDAO();
 
+
+        GradeDatabase db = Room.databaseBuilder(getApplicationContext(), GradeDatabase.class, "database-name").fallbackToDestructiveMigration().build();
+        gDAO = db.gmDAO();
+        Log.d("notSHow","2");
         gradeModel = new ViewModelProvider(this).get(GradeViewModel.class);
 
 
 
         gradeModel.grades.setValue(grades = new ArrayList<>());
-
+        Log.d("notSHow","before executor");
         Executor thread = Executors.newSingleThreadExecutor();
-        thread.execute(() ->
-        {
+        thread.execute(() -> {
             grades.addAll(gDAO.getAllMessages());
-            myAdapter = new MyAdapter(grades);
+            Log.d("notShow", "Grades size: " + grades.size());
             runOnUiThread(() -> {
+                // Update the ViewModel's grades directly, don't use the grades variable
+                Log.d("notSHow","gradeModel.grades.setValue(grades);");
+                gradeModel.grades.setValue(grades);
+                Log.d("notSHow","before1");
+                myAdapter = new MyAdapter(grades);
+                Log.d("notSHow","before2");
+                binding.recycleView.setAdapter(myAdapter);
 
-                        binding.recycleView.setAdapter(myAdapter);
-                    }
-            ); //You can then load the RecyclerView
 
-
+                Log.d("notSHow","seetAdapter");
+            });
         });
 
 
-
+        prefs = getSharedPreferences("MyData", Context.MODE_PRIVATE);
+        String timeSent = prefs.getString("timeSent"," ");
 
 
 
@@ -88,9 +105,21 @@ public class Rank extends AppCompatActivity {
 
         });
 
-        binding.checkMyRank.setOnClickListener(clk2 -> {
-            Toast.makeText(this, "You are no.22", Toast.LENGTH_LONG)
-                    .show();
+
+
+
+        gradeModel.selectedMessage.observe(this,newGrade ->{
+            if(newGrade !=null){
+
+                FragmentManager fMgr = getSupportFragmentManager();
+
+                GradeDetailsFragment gradeFragment = new GradeDetailsFragment(newGrade);
+                FragmentTransaction tx = fMgr.beginTransaction();
+                tx.addToBackStack("DOES NOT MATTER WHICH STRING")
+                        .replace(R.id.fragmentLocation,gradeFragment)
+                        .commit()
+                ;
+            }
         });
 
 
@@ -100,6 +129,8 @@ public class Rank extends AppCompatActivity {
     class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
 
         private ArrayList<Grade> grades;
+
+
 
         public MyAdapter(ArrayList<Grade> grades) {
             this.grades = grades;
@@ -116,15 +147,23 @@ public class Rank extends AppCompatActivity {
         @Override
         public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
             Grade grade = grades.get(position);
+            NumberFormat percentFormat = NumberFormat.getPercentInstance();
             holder.username.setText(grade.getUsername());
-            holder.time.setText(grade.getTimesent());
+            holder.number.setText(String.valueOf(grade.getQuestionNumber()));
+            holder.grade.setText(String.format("%.2f",grade.getGrade()*100));
+
+            Log.d("notSHow","setholder");
+            holder.rank.setText(String.valueOf(position+1));
         }
 
         @Override
         public int getItemCount() {
             return grades.size();
         }
+
+
     }
+
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -132,15 +171,15 @@ public class Rank extends AppCompatActivity {
 
         if (item.getItemId() == R.id.help) {
             AlertDialog.Builder builder = new AlertDialog.Builder(Rank.this);
-            builder.setTitle("About this program: ");
-            builder.setMessage("This program is used for take a quiz and rank your grade.");
-            builder.setPositiveButton("OK", (dialog, cl) -> {
+            builder.setTitle(R.string.trivia_alert_title);
+            builder.setMessage(R.string.trivia_alert_des);
+            builder.setPositiveButton(R.string.trivia_positive, (dialog, cl) -> {
             });
             builder.create().show();
         }
         if (item.getItemId() == R.id.main) {
-            Snackbar.make(binding.getRoot(), "Do you want to go to the main page?", Snackbar.LENGTH_LONG)
-                    .setAction("Yes", click -> {
+            Snackbar.make(binding.getRoot(), R.string.trivia_snackbar, Snackbar.LENGTH_LONG)
+                    .setAction(R.string.trivia_positive, click -> {
                         startActivity(new Intent(Rank.this, MainActivity.class));
                     })
                     .show();
@@ -154,20 +193,30 @@ public class Rank extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
         getMenuInflater().inflate(R.menu.menu_trivia, menu);
-        getSupportActionBar().setTitle("Trivia Question");
+        getSupportActionBar().setTitle(R.string.trivia_menu_title);
         return true;
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView username;
-        TextView time;
+        TextView number;
+        TextView grade;
+        TextView rank;
 
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             username = itemView.findViewById(R.id.username_view);
-            time = itemView.findViewById(R.id.time_view);
+            number = itemView.findViewById(R.id.number_view);
+            rank = itemView.findViewById(R.id.rank_view);
+            grade = itemView.findViewById(R.id.grade_view);
+
+            itemView.setOnClickListener(clk->{
+                int position = getAdapterPosition();
+                Grade selected = grades.get(position);
+                gradeModel.selectedMessage.postValue(selected);
+            });
         }
 
 
