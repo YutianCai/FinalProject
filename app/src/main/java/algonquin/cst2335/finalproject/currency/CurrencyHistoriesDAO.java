@@ -11,7 +11,7 @@ public interface CurrencyHistoriesDAO {
     long insertCurrencyHistories(CurrencyHistories currencyHistories);
 
     @Query("Select * from CurrencyHistories")
-    List<CurrencyHistories> getAllFlights();
+    List<CurrencyHistories> getAllHistories();
 
     @Delete
     void deleteCurrencyHistories(CurrencyHistories currencyHistories);

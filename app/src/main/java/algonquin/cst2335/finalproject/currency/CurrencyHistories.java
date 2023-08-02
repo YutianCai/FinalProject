@@ -8,24 +8,14 @@ public class CurrencyHistories {
     @ColumnInfo(name = "id")
     public long id;
 
-    @ColumnInfo(name = "currencyFrom")
-    private String currencyFrom;
-
-    @ColumnInfo(name = "currencyTo")
-    private String currencyTo;
-
-    @ColumnInfo(name = "currencyAmount")
-    private String currencyAmount;
+    @ColumnInfo(name = "HistoryColumn")
+    private String currencyHistory;
 
 
-    public CurrencyHistories() {
-    }
+    public CurrencyHistories() { }//for database query
 
-    public CurrencyHistories(String currencyFrom, String currencyTo, String currencyAmount) {
-        this.currencyFrom = currencyFrom;
-        this.currencyTo = currencyTo;
-        this.currencyAmount = currencyAmount;
-
+    public CurrencyHistories(String currencyHistory) {
+        this.currencyHistory = currencyHistory;
     }
 
     public long getId() {
@@ -36,30 +26,12 @@ public class CurrencyHistories {
         this.id = id;
     }
 
-    public String getCurrencyFrom() {
-        return currencyFrom;
+    public String getCurrencyHistory(){
+        return currencyHistory;
+     }
+
+    public void setCurrencyHistory(String currencyHistory) {
+        this.currencyHistory = currencyHistory;
     }
-
-    public void setCurrencyFrom(String currencyFrom) {
-        this.currencyFrom = currencyFrom;
-    }
-
-    public String getCurrencyTo() {
-        return currencyTo;
-    }
-
-    public void setCurrencyTo(String currencyTo) {
-        this.currencyTo = currencyTo;
-    }
-
-    public String getCurrencyAmount() {
-        return currencyAmount;
-    }
-
-    public void setCurrencyAmount(String currencyAmount) {
-        this.currencyAmount = currencyAmount;
-    }
-
-
 
 }
