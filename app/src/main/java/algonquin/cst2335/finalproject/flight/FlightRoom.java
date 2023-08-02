@@ -143,7 +143,7 @@ public class FlightRoom extends AppCompatActivity {
                             }
                     },
                     (error) -> {
-                        Toast.makeText(this, R.string.failToSearchOnline,Toast.LENGTH_LONG).show();
+                        Toast.makeText(this, getResources().getString(R.string.failToSearchOnline),Toast.LENGTH_LONG).show();
                     });
             queue.add(request);//send request to server
 
@@ -199,7 +199,7 @@ public class FlightRoom extends AppCompatActivity {
         super.onCreateOptionsMenu(menu);
         // load a Menu layout file
         getMenuInflater().inflate(R.menu.menu_flight, menu);
-        getSupportActionBar().setTitle(R.string.flight);
+        getSupportActionBar().setTitle(getResources().getString(R.string.flight));
         return true;
     }
 
