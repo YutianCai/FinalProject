@@ -46,6 +46,11 @@ import algonquin.cst2335.finalproject.databinding.DetailsCurrencyBinding;
 import algonquin.cst2335.finalproject.flight.FlightRoom;
 import algonquin.cst2335.finalproject.trivia.TriviaHomepage;
 
+/**
+ * @author Lilin Zeng
+ * @version 1.0
+ * This is a currency converter that allows for the conversion between different countries' currencies.
+ */
 public class CurrencyConverter extends AppCompatActivity {
     protected ActivityCurrencyBinding binding;
     protected ArrayList<CurrencyHistories> currencyHistories = new ArrayList<>();
@@ -60,6 +65,14 @@ public class CurrencyConverter extends AppCompatActivity {
     String fromCurrency, toCurrency;
     int position;
 
+    /**
+     * This method is called when the activity is created. It initializes the ViewModel, sets up the RecyclerView adapter,
+     * and handles button click events for currency conversion and saving currency histories.
+     * @param savedInstanceState If the activity is being re-initialized after
+     *     previously being shut down then this Bundle contains the data it most
+     *     recently supplied in {@link #onSaveInstanceState}.  <b><i>Note: Otherwise it is null.</i></b>
+     *
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,6 +88,7 @@ public class CurrencyConverter extends AppCompatActivity {
                 tx.commit();
             }
         });
+
 
         binding = ActivityCurrencyBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -104,9 +118,8 @@ public class CurrencyConverter extends AppCompatActivity {
 
         binding.myRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-
-        // initialize myAdapter
         myAdapter = new RecyclerView.Adapter<MyRowHolder>() {
+
             @NonNull
             @Override
             public MyRowHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -281,9 +294,16 @@ public class CurrencyConverter extends AppCompatActivity {
         return true;
     }
 
+    /**
+     *  This class to represent an item in the RecyclerView for CurrencyHistories data.
+     */
     public class MyRowHolder extends RecyclerView.ViewHolder {
         TextView currency_history;
 
+        /**
+         * A constructor for MyRowHolder class.
+         * @param itemView The View representing an item in the RecyclerView.
+         */
         public MyRowHolder(@NonNull View itemView) {
             super(itemView);
             currency_history = itemView.findViewById(R.id.currency_history);

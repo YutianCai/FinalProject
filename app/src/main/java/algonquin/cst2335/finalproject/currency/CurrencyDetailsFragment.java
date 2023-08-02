@@ -17,10 +17,17 @@ import java.util.concurrent.Executors;
 import algonquin.cst2335.finalproject.R;
 import algonquin.cst2335.finalproject.databinding.DetailsCurrencyDeleteBinding;
 
+/**
+ * This class for displaying details of a specific CurrencyHistories item and allowing the user to delete it.
+ */
 public class CurrencyDetailsFragment extends Fragment {
     protected CurrencyHistories selected;
     protected CurrencyHistoriesDAO myDAO;
 
+    /**
+     * A constructor for CurrencyDetailsFragment.
+     * @param h Constructor for CurrencyDetailsFragment.
+     */
     public CurrencyDetailsFragment(CurrencyHistories h){
         selected = h;
     }
