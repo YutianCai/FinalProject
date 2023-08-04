@@ -44,20 +44,44 @@ import java.util.concurrent.Executors;
 
 import algonquin.cst2335.finalproject.MainActivity;
 import algonquin.cst2335.finalproject.R;
+import algonquin.cst2335.finalproject.bear.BearHomepage;
+import algonquin.cst2335.finalproject.currency.CurrencyConverter;
 import algonquin.cst2335.finalproject.databinding.ActivityTriviaQuestionBinding;
-
+import algonquin.cst2335.finalproject.flight.FlightRoom;
+/**
+ * Activity class for the Trivia quiz.
+ * This activity displays trivia questions based on the selected category and number of questions from the TriviaHomepage.
+ * Users can answer the questions by selecting the correct option.
+ * After answering all the questions, users can submit their answers and get a grade.
+ * Users can also view their past grades in the rank page.
+ */
 public class TriviaQuestion extends AppCompatActivity {
 
-
+    /**
+     * View binding instance for the activity layout.
+     * This binding is used to access views directly from the layout file without using findViewById.
+     */
     ActivityTriviaQuestionBinding binding;
-
+    /**
+     * Shared Preferences for storing and retrieving data related to the ranking.
+     * The `prefs` variable is used to access the SharedPreferences instance to store and retrieve data related to the Trivia ranking.
+     * This SharedPreferences is used to store data like the time of grade submission or other ranking-related information.
+     * SharedPreferences provides a simple way to save key-value pairs persistently across application sessions.
+     * It allows the app to store small amounts of data that should be kept even when the app is closed and reopened.
+     */
     private SharedPreferences prefs;
-
+    /**
+     * RequestQueue instance for handling network requests.
+     */
     RequestQueue queue = null;
 
 
 
-
+    /**
+     * Callback method called when the activity is created.
+     *
+     * @param savedInstanceState The saved instance state of the activity.
+     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -266,7 +290,11 @@ public class TriviaQuestion extends AppCompatActivity {
 
 
     }
-
+    /**
+     * Validates whether all questions have been answered.
+     *
+     * @return True if all questions have been answered, otherwise false.
+     */
     public boolean validateQuestion() {
         LinearLayout parent = findViewById(R.id.linear);
         Log.d("validateQuestion","into the validate function");
@@ -285,7 +313,12 @@ public class TriviaQuestion extends AppCompatActivity {
         //
         return true;
     }
-
+    /**
+     * Validates whether the user's name is provided.
+     *
+     * @param ed The EditText containing the user's name.
+     * @return True if the name is provided, otherwise false.
+     */
     public boolean validateName(EditText ed){
         if(ed.getText().toString().isEmpty()){
             return false;
@@ -295,6 +328,11 @@ public class TriviaQuestion extends AppCompatActivity {
 
 
     }
+    /**
+     * Retrieves the selected option for each question.
+     *
+     * @return A list of integers representing the selected option for each question.
+     */
     public List<Integer> GetQuestionOption(){
 
         LinearLayout parent = findViewById(R.id.linear);
@@ -323,11 +361,26 @@ public class TriviaQuestion extends AppCompatActivity {
 
     }
 
-
+    /**
+     * Callback method for handling menu item selection.
+     *
+     * @param item The selected menu item.
+     * @return True if the menu item is handled, otherwise false.
+     */
     @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item) {
         super.onOptionsItemSelected(item);
-
+        if (item.getItemId() == R.id.currency) {
+            Intent currency = new Intent(TriviaQuestion.this, CurrencyConverter.class);
+            startActivity(currency);}
+        else if(item.getItemId() == R.id.flight){
+            Intent flight = new Intent(TriviaQuestion.this, FlightRoom.class);
+            startActivity(flight);
+        }
+        else if(item.getItemId() == R.id.bear) {
+            Intent bear = new Intent(TriviaQuestion.this, BearHomepage.class);
+            startActivity(bear);
+        }
         if(item.getItemId()==R.id.help) {
             AlertDialog.Builder builder = new AlertDialog.Builder(TriviaQuestion.this);
             builder.setTitle(R.string.trivia_alert_title);
@@ -347,7 +400,12 @@ public class TriviaQuestion extends AppCompatActivity {
 
         return true;
     }
-
+    /**
+     * Callback method for creating the options menu.
+     *
+     * @param menu The menu instance to be created.
+     * @return True if the menu is successfully created, otherwise false.
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
@@ -357,14 +415,40 @@ public class TriviaQuestion extends AppCompatActivity {
     }
 
 
-
+    /**
+     * Inner class representing a trivia question.
+     */
     class Question{
-        String question;
-        String correctAnswer;
-        String wrongAnswer1;
-        String wrongAnswer2;
-        String wrongAnswer3;
+        /**
+     * The trivia question.
+     */
 
+        String question;
+        /**
+         * The correct answer for the question.
+         */
+        String correctAnswer;
+        /**
+         * A wrong answer for the question.
+         */
+        String wrongAnswer1;
+        /**
+         * Another wrong answer for the question.
+         */
+        String wrongAnswer2;/**
+         * Yet another wrong answer for the question.
+         */
+
+        String wrongAnswer3;
+        /**
+         * Constructor for creating a Question object.
+         *
+         * @param question      The trivia question.
+         * @param correctAnswer The correct answer for the question.
+         * @param wrongAnswer1  A wrong answer for the question.
+         * @param wrongAnswer2  Another wrong answer for the question.
+         * @param wrongAnswer3  Yet another wrong answer for the question.
+         */
         public Question(String question, String correctAnswer, String wrongAnswer1, String wrongAnswer2, String wrongAnswer3) {
             this.question = question;
             this.correctAnswer = correctAnswer;
@@ -372,9 +456,15 @@ public class TriviaQuestion extends AppCompatActivity {
             this.wrongAnswer2 = wrongAnswer2;
             this.wrongAnswer3 = wrongAnswer3;
         }
-
+        /**
+         * Default constructor for the Question class.
+         */
         public void Question(){};
-
+        /**
+         * Gets the trivia question.
+         *
+         * @return The trivia question as a string.
+         */
         public String getQuestion() {
             return question;
         }

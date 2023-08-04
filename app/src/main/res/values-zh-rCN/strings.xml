@@ -44,4 +44,8 @@
     <string name="trivia_submit">提交</string>
     <string name="trivia_tryAgain">再来一次</string>
     <string name="trivia_yourRank">你的排名是</string>
+    <string name="trivia_deleteTitle">问题：</string>
+    <string name="trivia_deleteMessage">你想要删除这条记录吗?</string>
+    <string name="trivia_negative">不</string>
+    <string name="trivia_no_selected">你必须选择一条记录。</string>
 </resources>

@@ -78,4 +78,8 @@
     <string name="trivia_submit">Submit</string>
     <string name="trivia_tryAgain">Try Again</string>
     <string name="trivia_yourRank">Your rank is </string>
+    <string name="trivia_deleteTitle">Question: </string>
+    <string name="trivia_deleteMessage">Do you want to delete this record?</string>
+    <string name="trivia_negative">No</string>
+    <string name="trivia_no_selected">You need to select an item.</string>
 </resources>

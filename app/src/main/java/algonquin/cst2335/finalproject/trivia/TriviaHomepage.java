@@ -25,12 +25,37 @@ import algonquin.cst2335.finalproject.bear.BearHomepage;
 import algonquin.cst2335.finalproject.currency.CurrencyConverter;
 import algonquin.cst2335.finalproject.databinding.ActivityTriviaHomepageBinding;
 import algonquin.cst2335.finalproject.flight.FlightRoom;
-
+/**
+ * Activity class for the Trivia homepage.
+ * This activity allows users to select a trivia category and the number of questions they want to answer.
+ * Users can then proceed to the trivia quiz by clicking on the "Next Page" button.
+ * The selected category and number of questions are passed to the TriviaQuestion activity.
+ * The TriviaQuestion activity will display trivia questions based on the selected category and number of questions.
+ */
 public class TriviaHomepage extends AppCompatActivity {
+    /**
+     * View binding instance for the activity layout.
+     * This binding is used to access views directly from the layout file without using findViewById.
+     */
     ActivityTriviaHomepageBinding binding;
+    /**
+     * Shared Preferences for storing and retrieving data related to the ranking.
+     * The `prefs` variable is used to access the SharedPreferences instance to store and retrieve data related to the Trivia ranking.
+     * This SharedPreferences is used to store data like the time of grade submission or other ranking-related information.
+     * SharedPreferences provides a simple way to save key-value pairs persistently across application sessions.
+     * It allows the app to store small amounts of data that should be kept even when the app is closed and reopened.
+     */
     private SharedPreferences prefs;
 
-
+    /**
+     * Activity class for the Trivia homepage.
+     * This activity allows users to select a trivia category and the number of questions they want to answer.
+     * Users can then proceed to the trivia quiz by clicking on the "Next Page" button.
+     * The selected category and number of questions are passed to the TriviaQuestion activity.
+     * The TriviaQuestion activity will display trivia questions based on the selected category and number of questions.
+     *
+     * @param savedInstanceState A Bundle object containing the activity's previously saved state, if any.
+     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +98,14 @@ public class TriviaHomepage extends AppCompatActivity {
         });
     }
     // validate if it is okay
+    /**
+     * Validates the user input and checks if it's okay to proceed to the next page.
+     * The user must select a trivia category and input the number of questions (up to 50).
+     *
+     * @param r The RadioGroup containing the trivia category options.
+     * @param qNumber The EditText field for entering the number of questions.
+     * @return Returns true if the user input is valid and it's okay to proceed to the next page.
+     */
     public boolean ValidateNextPage(RadioGroup r, EditText qNumber){
 
 
@@ -99,7 +132,12 @@ public class TriviaHomepage extends AppCompatActivity {
 
 
     };
-
+    /**
+     * Retrieves the selected trivia category's option ID based on the selected RadioButton.
+     *
+     * @param r The RadioGroup containing the trivia category options.
+     * @return Returns the option ID of the selected trivia category.
+     */
     // get the option
     public int GetOption(RadioGroup r){
         Log.d("oncreate","before get tag");
@@ -167,7 +205,12 @@ public class TriviaHomepage extends AppCompatActivity {
         return optionId;
 
     }
-
+    /**
+     * Called when a menu item is selected from the options menu.
+     *
+     * @param item The selected menu item.
+     * @return Returns true if the item selection was handled successfully.
+     */
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         super.onOptionsItemSelected(item);
@@ -197,7 +240,14 @@ public class TriviaHomepage extends AppCompatActivity {
         }
         return true;
     }
-
+    /**
+     * Inflates the options menu for this activity.
+     * This method is called to create the options menu when the activity is being initialized.
+     * It inflates the menu_trivia layout to create the menu items and sets the action bar title.
+     *
+     * @param menu The menu instance to be inflated.
+     * @return Returns true to indicate that the options menu was successfully created.
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
