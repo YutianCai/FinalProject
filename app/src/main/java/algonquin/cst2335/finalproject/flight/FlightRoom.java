@@ -51,7 +51,6 @@ public class FlightRoom extends AppCompatActivity {
     protected FlightRoomViewModel flightModel;
     protected RecyclerView.Adapter myAdapter;
     protected FlightInfoDAO myDAO;
-    protected int position;
     protected RequestQueue queue = null; // for sending network requests
 
     /**
@@ -82,6 +81,14 @@ public class FlightRoom extends AppCompatActivity {
 
         // initialize myAdapter
         myAdapter = new RecyclerView.Adapter<MyRowHolder>() {
+            /**
+             * Create the view holder.
+             * @param parent The ViewGroup into which the new View will be added after it is bound to
+             *               an adapter position.
+             * @param viewType The view type of the new View.
+             *
+             * @return the view of MyRowHolder
+             */
             @NonNull
             @Override
             public MyRowHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -89,17 +96,32 @@ public class FlightRoom extends AppCompatActivity {
                 return new MyRowHolder(binding.getRoot());
             }
 
+            /**
+             * Update the contents of each view holder.
+             * @param holder The ViewHolder which should be updated to represent the contents of the
+             *        item at the given position in the data set.
+             * @param position The position of the item within the adapter's data set.
+             */
             @Override
             public void onBindViewHolder(@NonNull MyRowHolder holder, int position) {
                 FlightInfo obj = showFlights.get(position);
                 holder.destinationText.setText(obj.getDestination());
             }
 
+            /**
+             * Get the item count.
+             * @return an integer to show the total count
+             */
             @Override
             public int getItemCount() {
                 return showFlights.size();
             }
 
+            /**
+             * Get the item view type.
+             * @param position position to query
+             * @return an integer to represent which type this item is
+             */
             public int getItemViewType(int position) { return 0; }
         };
 
@@ -164,7 +186,10 @@ public class FlightRoom extends AppCompatActivity {
             thread.execute(() -> {
                 //get all messages from database
                 savedFlights.addAll(myDAO.getAllFlights());
+                //save these flight to view model
                 showFlights = savedFlights;
+                flightModel.savedFlights.postValue(savedFlights);
+                flightModel.showFlights.postValue(showFlights);
                 //set adapter, update the RecyclerView
                 runOnUiThread(() -> binding.recycleView.setAdapter(myAdapter));
             });
@@ -174,12 +199,12 @@ public class FlightRoom extends AppCompatActivity {
         flightModel.selectedFlight.observe(this, (newFlightInfo) -> {
             if (newFlightInfo != null) {
                 // newMessageValue is the value to post
-                FlightDetailsFragment chatFragment = new FlightDetailsFragment(newFlightInfo);
+                FlightDetailsFragment flightFragment = new FlightDetailsFragment(newFlightInfo, this);
                 // show the fragment on screen
                 getSupportFragmentManager()
                         .beginTransaction()
                         .addToBackStack("Doesn't matter")
-                        .replace(R.id.fragmentLocation, chatFragment)
+                        .replace(R.id.fragmentLocation, flightFragment)
                         .commit();
             }
         });
@@ -188,6 +213,26 @@ public class FlightRoom extends AppCompatActivity {
         binding.recycleView.setLayoutManager(new LinearLayoutManager(this));
 
 }
+
+    /**
+     * Delete the FlightInfo object in showFlights.
+     * @param flightInfo the FlightInfo object to delete
+     */
+    public void deleteFlight(FlightInfo flightInfo){
+        showFlights.remove(flightInfo);
+        savedFlights.remove(flightInfo);
+        runOnUiThread(() ->myAdapter.notifyDataSetChanged() );
+    }
+
+    /**
+     * Add the FlightInfo object in showFlights.
+     * @param flightInfo the FlightInfo object to delete
+     */
+    public void addFlight(FlightInfo flightInfo){
+        showFlights.add(flightInfo);
+        savedFlights.add(flightInfo);
+        runOnUiThread(() ->myAdapter.notifyDataSetChanged() );
+    }
 
     /**
      * This is to create a menu for flight page.
@@ -248,7 +293,7 @@ public class FlightRoom extends AppCompatActivity {
 
             //click to show details of this flight
             itemView.setOnClickListener(click -> {
-                position = getAdapterPosition();
+                int position = getAdapterPosition();
 
                 FlightInfo selected = showFlights.get(position);
                 flightModel.selectedFlight.postValue(selected);

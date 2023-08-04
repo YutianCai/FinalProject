@@ -20,13 +20,14 @@ public class FlightDetailsFragment extends Fragment{
 
     protected FlightInfo selectedFlight;
     protected FlightInfoDAO myDAO;
-
+    protected FlightRoom myFlightRoom;
     /**
      * Parameterized constructor.
      * @param flightInfo the selected flight to show details
      */
-    public FlightDetailsFragment(FlightInfo flightInfo) {
+    public FlightDetailsFragment(FlightInfo flightInfo, FlightRoom fr) {
         selectedFlight = flightInfo;
+        myFlightRoom  = fr;
     }
 
     /**
@@ -88,6 +89,7 @@ public class FlightDetailsFragment extends Fragment{
                 Executor threadA = Executors.newSingleThreadExecutor();
                 threadA.execute(() -> {
                     myDAO.deleteFlightInfo(selectedFlight);
+                    myFlightRoom.deleteFlight(selectedFlight);
                 });
 
                 Snackbar.make(binding.getRoot(),getResources().getString(R.string.youDeletedFlight),Snackbar.LENGTH_LONG)
@@ -95,6 +97,7 @@ public class FlightDetailsFragment extends Fragment{
                             Executor threadB = Executors.newSingleThreadExecutor();
                             threadB.execute(() -> {
                                 myDAO.insertFlightInfo(selectedFlight);
+                                myFlightRoom.addFlight(selectedFlight);
                             });
                         })
                         .show();
