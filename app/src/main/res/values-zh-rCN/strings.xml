@@ -48,4 +48,6 @@
     <string name="trivia_deleteMessage">你想要删除这条记录吗?</string>
     <string name="trivia_negative">不</string>
     <string name="trivia_no_selected">你必须选择一条记录。</string>
+    <string name="trivia_questionNumber">你需要输入问题的数量，不能为0，不能大于50。</string>
+    <string name="trivia_questionNumber_topic">你需要输入问题的数量并且选择一个话题。</string>
 </resources>

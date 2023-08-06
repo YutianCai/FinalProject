@@ -114,24 +114,24 @@ public class TriviaHomepage extends AppCompatActivity {
                 return true;
             }
             else{
-                Toast.makeText(this,"You need to input the number of question, and it need to be no larger than 50.",Toast.LENGTH_LONG)
+                Toast.makeText(this,R.string.trivia_questionNumber,Toast.LENGTH_LONG)
                         .show();
                 return false;
             }
         }
         else if(qNumber.getText().toString().isEmpty()){
-            Toast.makeText(this,"You need to input the number of question and choose a topic.",Toast.LENGTH_LONG)
+            Toast.makeText(this,R.string.trivia_questionNumber_topic,Toast.LENGTH_LONG)
                     .show();
             return false;
         }
         else{
-            Toast.makeText(this,"You need to choose a topic.",Toast.LENGTH_LONG)
+            Toast.makeText(this,R.string.trivia_choose_a_topic,Toast.LENGTH_LONG)
                     .show();
             return false;
         }
 
 
-    };
+    }
     /**
      * Retrieves the selected trivia category's option ID based on the selected RadioButton.
      *
