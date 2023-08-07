@@ -24,20 +24,11 @@
         app:layout_constraintGuide_percent="0.25" />
 
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycleView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <TextView
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Currency Converter"
+        android:text="@string/currency_converter"
         android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
@@ -49,7 +40,7 @@
         android:id="@+id/tvFrom"
         android:layout_width="63dp"
         android:layout_height="22dp"
-        android:text="From"
+        android:text="@string/tv_from"
         app:layout_constraintTop_toTopOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="@+id/spFromCurrency" />
 
@@ -57,7 +48,7 @@
         android:id="@+id/tvTo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="To"
+        android:text="@string/tv_to"
         app:layout_constraintTop_toTopOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="@+id/spToCurrency" />
 
@@ -66,7 +57,7 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Amount"
+        android:hint="@string/amount_hint"
         android:layout_marginEnd="16dp"
         app:layout_constraintBottom_toBottomOf="@+id/spFromCurrency"
         app:layout_constraintEnd_toStartOf="@+id/spFromCurrency"
@@ -97,7 +88,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Convert"
+        android:text="@string/button_convert"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spToCurrency" />
 
@@ -108,7 +99,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
         android:layout_marginEnd="16dp"
-        android:text="Display"
+        android:text="@string/button_display"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnConvert" />
 
@@ -117,7 +108,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
-        android:text="Save"
+        android:text="@string/button_save"
         app:layout_constraintEnd_toStartOf="@+id/btnDisplay"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnConvert" />
@@ -128,11 +119,13 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:textColor="@color/black"
+        android:text="@string/tv_result"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/btnConvert"
         app:layout_constraintEnd_toStartOf="@+id/btnConvert"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/btnConvert"
-        tools:text="10 EUR = 15.0 USD" />
+        app:layout_constraintTop_toTopOf="@+id/btnConvert"/>
+
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -145,8 +138,25 @@
         app:layout_constraintTop_toTopOf="@+id/btnConvert"
         tools:visibility="visible" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/myRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="420dp"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnSave"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
- 
-
+    <FrameLayout
+        android:id="@+id/fragmentLocation"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="80dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

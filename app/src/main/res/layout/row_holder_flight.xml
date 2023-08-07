@@ -9,20 +9,11 @@
         android:id="@+id/destination"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
-        android:text="Destination"
+        android:text="@string/destination"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/terminal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:text="Terminal"
-        app:layout_constraintStart_toEndOf="@+id/destination"
-        app:layout_constraintTop_toTopOf="@+id/destination" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
