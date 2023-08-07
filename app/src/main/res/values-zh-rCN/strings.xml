@@ -15,6 +15,21 @@
     <string name="type_here">在这里输入</string>
     <string name="favorite">收藏</string>
     <string name="help">帮助</string>
+
+    <string name="Choose">选择图片大小</string>
+    <string name="hint1">输入宽度像素</string>
+    <string name="hint2">输入高度像素</string>
+    <string name="Generate">生成图片</string>
+    <string name="List">查看历史生成图片</string>
+    <string name="Width">宽度:</string>
+    <string name="Height">高度:</string>
+    <string name="About">关于此软件： </string>
+    <string name="Instruction">1.输入想要的宽度和高度.2点击 \'生成图片\'来生成图片.3.点击\'查看历史生成图片\'来查看所有已生成图片4.点击图片查看细节.5.长击图片删除.</string>
+    <string name="OK">好的 </string>
+    <string name="GO">回到主页？ </string>
+    <string name="Yes">是的 </string>
+    <string name="Generated">图片已生成 </string>
+
     <string name="no">否</string>
     <string name="flightInstruction">输入航站号，点击搜索按钮搜索相关信息。点击收藏按钮显示收藏的航班。</string>
     <string name="instruction">操作指南</string>
@@ -49,4 +64,5 @@
     <string name="delete_undo">撤回</string>
     <string name="saved_successfully">保存成功</string>
     <string name="menu_YES">是</string>
+
 </resources>

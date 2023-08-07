@@ -11,6 +11,21 @@
     <string name="saved_flights">Saved flights</string>
     <string name="main_page">Main Page</string>
     <string name="help">Help </string>
+
+    <string name="Choose">Choose image size </string>
+    <string name="hint1">Enter width in pixels </string>
+    <string name="hint2">Enter height in pixels </string>
+    <string name="Generate">Generate Image </string>
+    <string name="List">See generated images </string>
+    <string name="Width">Width: </string>
+    <string name="Height">Height: </string>
+    <string name="About">About this program: </string>
+    <string name="Instruction">1.Type in your desired width and height.2.Click \'Generate Image\' to generate a bear image.3.Click \'See Generated Images\' to see all generated pictures4.Click each picture to see details.5.Long click each picture to delete. </string>
+    <string name="OK">OK </string>
+    <string name="GO">Do you want to go to the main page? </string>
+    <string name="Yes">Yes </string>
+    <string name="Generated">Image generated. </string>
+
     <string name="goToMainPage">Do you want to go to the main page?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
@@ -48,6 +63,7 @@
     <string name="delete_undo">Undo</string>
     <string name="saved_successfully">Saved successfully</string>
     <string name="menu_YES">Yes</string>
+
     <string name="about">About</string>
 
 </resources>
