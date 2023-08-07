@@ -8,7 +8,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
@@ -72,7 +71,7 @@ public class TriviaHomepage extends AppCompatActivity {
         setSupportActionBar(binding.homePageMenu);
 
         prefs = getSharedPreferences("MyData", Context.MODE_PRIVATE);
-        String qn = prefs.getString("questionNumber"," ");
+        String qn = prefs.getString("questionNumber","10");
 
         binding.qNumber.setText(qn);
 
@@ -139,7 +138,7 @@ public class TriviaHomepage extends AppCompatActivity {
      */
     // get the option
     public int GetOption(RadioGroup r){
-        Log.d("oncreate","before get tag");
+
         RadioButton option = findViewById(r.getCheckedRadioButtonId());
         int optionId = 0;
         switch (option.getText().toString()){
