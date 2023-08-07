@@ -78,7 +78,7 @@ public class BearHomepage extends AppCompatActivity {
         setContentView(binding.getRoot());
         setSupportActionBar(binding.homePageMenu);
         // Initialize the database and DAO
-        ImageDatabase db = Room.databaseBuilder(getApplicationContext(), ImageDatabase.class, "database-name").build();
+        ImageDatabase db = Room.databaseBuilder(getApplicationContext(), ImageDatabase.class, "database-name").fallbackToDestructiveMigration().build();
         dao = db.imDAO();
         Executor thread = Executors.newSingleThreadExecutor();
         // Update the UI with the retrieved bear images using runOnUiThread

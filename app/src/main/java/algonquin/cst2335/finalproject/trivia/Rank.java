@@ -86,7 +86,7 @@ public class Rank extends AppCompatActivity {
         binding = ActivityRankBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         setSupportActionBar(binding.rankMenu);
-        Log.d("notSHow","1");
+
         binding.recycleView.setLayoutManager(new LinearLayoutManager(this));
 
 
@@ -94,28 +94,28 @@ public class Rank extends AppCompatActivity {
 
         GradeDatabase db = Room.databaseBuilder(getApplicationContext(), GradeDatabase.class, "database-name").fallbackToDestructiveMigration().build();
         gDAO = db.gmDAO();
-        Log.d("notSHow","2");
+
         gradeModel = new ViewModelProvider(this).get(GradeViewModel.class);
 
 
 
         gradeModel.grades.setValue(grades = new ArrayList<>());
-        Log.d("notSHow","before executor");
+
         Executor thread = Executors.newSingleThreadExecutor();
         thread.execute(() -> {
             grades.addAll(gDAO.getAllMessages());
-            Log.d("notShow", "Grades size: " + grades.size());
+
             runOnUiThread(() -> {
                 // Update the ViewModel's grades directly, don't use the grades variable
-                Log.d("notSHow","gradeModel.grades.setValue(grades);");
+
                 gradeModel.grades.setValue(grades);
-                Log.d("notSHow","before1");
+
                 myAdapter = new MyAdapter(grades);
-                Log.d("notSHow","before2");
+
                 binding.recycleView.setAdapter(myAdapter);
 
 
-                Log.d("notSHow","seetAdapter");
+
             });
         });
 
@@ -131,7 +131,7 @@ public class Rank extends AppCompatActivity {
 
         binding.tryAgain.setOnClickListener(clk -> {
 
-            Log.d("tryAgain", "click success");
+
             startActivity(homepage);
 
         });
@@ -240,7 +240,7 @@ public class Rank extends AppCompatActivity {
             holder.number.setText(String.valueOf(grade.getQuestionNumber()));
             holder.grade.setText(String.format("%.2f",grade.getGrade()*100));
 
-            Log.d("notSHow","setholder");
+
             holder.rank.setText(String.valueOf(position+1));
         }
 
