@@ -29,4 +29,24 @@
     <string name="youDeletedFlight">你已删除此航线</string>
     <string name="delete">删除</string>
     <string name="save">保存</string>
+    <string name="currency_converter">货币换算</string>
+    <string name="amount_hint">金额</string>
+    <string name="button_convert">转换</string>
+    <string name="button_save">保存</string>
+    <string name="button_display">显示</string>
+    <string name="tv_from">从</string>
+    <string name="tv_to">到</string>
+    <string name="OK">确定</string>
+    <string name="instructionTitle">操作</string>
+    <string name="instructionMessage">点击转换进行转换，点击保存进行保存，点击显示进行显示，在删除记录后再次点击显示进行刷新</string>
+    <string name="main_page_question">你想跳转到主页吗？</string>
+    <string name="button_delete">删除</string>
+    <string name="delete_message">你想删除这条历史记录吗？</string>
+    <string name="delete_question">问题：</string>
+    <string name="delete_YES">是</string>
+    <string name="delete_NO">否</string>
+    <string name="delete_after">你删除了这条历史记录</string>
+    <string name="delete_undo">撤回</string>
+    <string name="saved_successfully">保存成功</string>
+    <string name="menu_YES">是</string>
 </resources>
