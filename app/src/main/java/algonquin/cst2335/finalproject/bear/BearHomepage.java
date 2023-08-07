@@ -89,7 +89,7 @@ public class BearHomepage extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
         getMenuInflater().inflate(R.menu.menu_bear, menu);
-        getSupportActionBar().setTitle("Bear Image");
+        getSupportActionBar().setTitle(R.string.bear);
         return true;
     }
 
