@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
-        android:text="Destination"
+        android:text="@string/destination"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -22,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="Terminal"
+        android:text="@string/terminal"
         app:layout_constraintStart_toStartOf="@+id/destination"
         app:layout_constraintTop_toBottomOf="@+id/destination" />
 
@@ -31,7 +31,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="Gate"
+        android:text="@string/gate"
         app:layout_constraintStart_toStartOf="@+id/terminal"
         app:layout_constraintTop_toBottomOf="@+id/terminal" />
 
@@ -40,15 +40,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="Delay"
+        android:text="@string/delay"
         app:layout_constraintStart_toStartOf="@+id/gate"
         app:layout_constraintTop_toBottomOf="@+id/gate" />
 
     <Button
+        android:id="@+id/deleteFlight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="Delete"
+        android:text="@string/delete"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/delay" />

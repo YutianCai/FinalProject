@@ -93,13 +93,11 @@ public class TriviaQuestion extends AppCompatActivity {
         binding = ActivityTriviaQuestionBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         setSupportActionBar(binding.questionMenu);
-        Log.d("Oncreate", "binding结束");
 
         Intent fromPrevious = getIntent();
         int optionId = fromPrevious.getIntExtra("option",0);
         String qNumber = fromPrevious.getStringExtra("questionNumber");
         String category = fromPrevious.getStringExtra("category");
-        Log.d("Oncreate", "获取optionID结束" + optionId);
 
         prefs = getSharedPreferences("My username",MODE_PRIVATE);
 
@@ -120,7 +118,6 @@ public class TriviaQuestion extends AppCompatActivity {
 
         String Url = "https://opentdb.com/api.php?amount="+qNumber+"&category="+optionId+"&type=multiple";
         Log.d("Oncreate", "before the request "+Url);
-
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, Url, null,
                 (response)->{
