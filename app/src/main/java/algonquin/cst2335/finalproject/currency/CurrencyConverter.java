@@ -120,6 +120,14 @@ public class CurrencyConverter extends AppCompatActivity {
 
         myAdapter = new RecyclerView.Adapter<MyRowHolder>() {
 
+            /**
+             * Creates a new MyRowHolder for displaying currency history details.
+             * @param parent The ViewGroup into which the new View will be added after it is bound to
+             *               an adapter position.
+             * @param viewType The view type of the new View.
+             *
+             * @return A new instance of MyRowHolder to hold the currency history details view.
+             */
             @NonNull
             @Override
             public MyRowHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -127,17 +135,32 @@ public class CurrencyConverter extends AppCompatActivity {
                 return new MyRowHolder(currencyBinding.getRoot());
             }
 
+            /**
+             * Binds the data at the specified position to the MyRowHolder view.
+             * @param holder The ViewHolder which should be updated to represent the contents of the
+             *        item at the given position in the data set.
+             * @param position The position of the item within the adapter's data set.
+             */
             @Override
             public void onBindViewHolder(@NonNull MyRowHolder holder, int position) {
                 CurrencyHistories ch = currencyHistories.get(position);
                 holder.currency_history.setText(ch.getCurrencyHistory());
             }
 
+            /**
+             * Returns the total number of currency histories in the list.
+             * @return The number of currency histories in the currencyHistories list.
+             */
             @Override
             public int getItemCount() {
                 return currencyHistories.size();
             }
 
+            /**
+             * Returns the view type of the item at the specified position.
+             * @param position The position of the item in the currencyHistories list.
+             * @return The view type of the item (always returns 0 in this implementation).
+             */
             public int getItemViewType(int position) {
                 return 0;
             }
@@ -256,6 +279,13 @@ public class CurrencyConverter extends AppCompatActivity {
 
 
 }
+
+    /**
+     * Initializes the options menu for the activity.
+     * @param menu The options menu in which you place your items.
+     *
+     * @return True if the menu is successfully created; false otherwise.
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
@@ -265,6 +295,12 @@ public class CurrencyConverter extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * Handles click events for the items in the options menu.
+     * @param item The menu item that was selected.
+     *
+     * @return True if the item selection is handled; false otherwise.
+     */
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.flight) {
