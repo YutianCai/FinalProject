@@ -155,10 +155,10 @@ public class BearHomepage extends AppCompatActivity {
         });
 
         binding.buttonList.setOnClickListener(clk -> {
-            if (binding.recyclerView.getVisibility() == View.VISIBLE) {
+           if (binding.recyclerView.getVisibility() == View.VISIBLE) {
                 binding.recyclerView.setVisibility(View.GONE);
             } else {
-                binding.recyclerView.setVisibility(View.VISIBLE);
+               binding.recyclerView.setVisibility(View.VISIBLE);
             }
         });
     }
