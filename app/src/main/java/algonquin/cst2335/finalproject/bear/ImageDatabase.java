@@ -6,7 +6,7 @@ import androidx.room.RoomDatabase;
  * A Room Database class that serves as the database for storing bear image information.
  * author: Chen Wu
  */
-@Database(entities = {ImageInfo.class}, version = 1)
+@Database(entities = {ImageInfo.class}, version = 2)
 /**
  * Retrieves the Data Access Object (DAO) for performing database operations related to bear images.
  *
