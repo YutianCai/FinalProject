@@ -9,7 +9,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -85,7 +84,7 @@ public class TriviaQuestion extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.d("Oncreate", "oncreate 第一行");
+
         queue = Volley.newRequestQueue(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trivia_question);
@@ -93,13 +92,11 @@ public class TriviaQuestion extends AppCompatActivity {
         binding = ActivityTriviaQuestionBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         setSupportActionBar(binding.questionMenu);
-        Log.d("Oncreate", "binding结束");
 
         Intent fromPrevious = getIntent();
         int optionId = fromPrevious.getIntExtra("option",0);
         String qNumber = fromPrevious.getStringExtra("questionNumber");
         String category = fromPrevious.getStringExtra("category");
-        Log.d("Oncreate", "获取optionID结束" + optionId);
 
         prefs = getSharedPreferences("My username",MODE_PRIVATE);
 
@@ -119,18 +116,17 @@ public class TriviaQuestion extends AppCompatActivity {
 
 
         String Url = "https://opentdb.com/api.php?amount="+qNumber+"&category="+optionId+"&type=multiple";
-        Log.d("Oncreate", "before the request "+Url);
 
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, Url, null,
                 (response)->{
-                    Log.d("Oncreate", "before the try");
+
                     JSONArray questionArray;
 
                     try {
-                        Log.d("Oncreate", "try first");
+
                         questionArray = response.getJSONArray("results");
-                        Log.d("Oncreate", "first line of the try");
+
                         ArrayList<Question> questions= new ArrayList<>();
                         for(int i=0;i<questionArray.length();i++){
                             JSONObject qObj = questionArray.getJSONObject(i);
@@ -141,7 +137,7 @@ public class TriviaQuestion extends AppCompatActivity {
                             String w1 = StringEscapeUtils.unescapeHtml4(incArray.getString(0));
                             String w2 = StringEscapeUtils.unescapeHtml4(incArray.getString(1));
                             String w3 = StringEscapeUtils.unescapeHtml4(incArray.getString(2));
-                            Log.d("Oncreate", "first line of the try");
+
                             questions.add(new Question(question,correctAnswer, w1,w2,w3));}
                             runOnUiThread( ( ) -> {
                                 LinearLayout parent = findViewById(R.id.linear);
@@ -220,18 +216,18 @@ public class TriviaQuestion extends AppCompatActivity {
 
                  startActivity(rankPage);
              } catch (Exception e) {
-                 Log.d("rankPage",e.toString());
+
              }
          });
 
         binding.submitAnswer.setOnClickListener(cl -> {
 
             if (validateQuestion()) {
-                Log.d("validateQuestion","alertdialog之前");
+
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                Log.d("validateQuestion","2 -al");
+
                 EditText userName = new EditText(this);
-                Log.d("validateQuestion","3-");
+
 
                 builder.setTitle(R.string.trivia_username)
                         .setMessage(R.string.trivia_usernameDes)
@@ -281,7 +277,7 @@ public class TriviaQuestion extends AppCompatActivity {
 
 
             } else {
-                Log.d("Oncreate", "validateQuestion() returns false");
+
                 Toast.makeText(this, "You need to answer all the questions.", Toast.LENGTH_LONG).show();
             }
         });
@@ -297,7 +293,7 @@ public class TriviaQuestion extends AppCompatActivity {
      */
     public boolean validateQuestion() {
         LinearLayout parent = findViewById(R.id.linear);
-        Log.d("validateQuestion","into the validate function");
+
         for (int i = 0; i < parent.getChildCount(); i++) {
             View questionLayout = parent.getChildAt(i);
             RadioGroup radioGroup = questionLayout.findViewById(R.id.radioGroupinQuestion);
@@ -305,11 +301,11 @@ public class TriviaQuestion extends AppCompatActivity {
             // 检查 RadioGroup 中是否有选中的 RadioButton
             if (radioGroup.getCheckedRadioButtonId() == -1) {
                 // 找到一个问题没有选择答案，返回 false
-                Log.d("validateQuestion","找到没有选择答案的");
+
                 return false;
             }
         }
-        Log.d("validateQuestion","所有问题都有选中的答案，返回 true");
+
         //
         return true;
     }
